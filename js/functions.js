@@ -215,6 +215,8 @@ function changePrediction() {
 			records[i].sub_region = colorSequence(records[i].flank, pos_and_char);
 			string_link = sprintf("http://string-db.org/version_9_1/newstring_cgi/show_network_section.pl?all_channels_on=0&identifiers=9606.%s%%0D9606.%s", metadata.ensp, records[i].prot_id)
 			records[i].string_score_link = sprintf('<a target="_blank" class="string-score" href="%s">%s</a>', string_link, records[i].string_score);
+			prot_link = sprintf("http://string-db.org/version_9_1/newstring_cgi/show_network_section.pl?all_channels_on=0&amp;identifiers=9606.%s", records[i].prot_id);
+			records[i].prot_name = sprintf('<a target="_blank" class="prot-name" href="%s">%s</a>', prot_link, records[i].prot_name);
 		}
 	      dynatable = $('#sites-table').dynatable({
 	        dataset: {
