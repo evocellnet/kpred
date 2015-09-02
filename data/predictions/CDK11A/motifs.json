@@ -1,0 +1,1 @@
+[{"motif":"R.RS.[ST]....R","score":637.13,"fg_matches":11,"fg_size":430,"bg_matches":0,"bg_size":10000,"fold_increase":"Inf"},{"motif":"..R..[ST].....","score":13.26,"fg_matches":63,"fg_size":419,"bg_matches":519,"bg_size":10000,"fold_increase":2.9},{"motif":".....[ST]P....","score":10.39,"fg_matches":57,"fg_size":356,"bg_matches":581,"bg_size":9481,"fold_increase":2.61}]

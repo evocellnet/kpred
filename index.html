@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://getbootstrap.com/examples/jumbotron-narrow/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <script src="./js/jquery-1.9.1.min.js"></script>
+
+    <script src="./js/sprintf.js"></script>
+
+    <script src="./js/bootstrap.js"></script>
+    <script src="./js/dynatable/jquery.dynatable.js"></script>
+    <script src="./js/select2/select2.js"></script>
+    <script src="./js/color-seqs.js"></script>
+    <script src="./js/functions.js"></script>
+
+    <script src="./js/intense-zoom/intense.min.js"></script>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="beta">
+    <meta name="author" content="omarwagih">
+
+    <title>kinpred-dummy</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.cosmo.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./css/jumbotron-narrow.css" rel="stylesheet">
+
+    <!-- select2 -->
+    <link href="./js/select2/select2.css" rel="stylesheet">
+    <link rel="stylesheet" href="./js/select2/select2-bootstrap.css">
+
+    <link href="./js/dynatable/jquery.dynatable.css" medial="all" rel="stylesheet">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700,900,400italic,100|Roboto+Mono:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="./css/style.css" rel="stylesheet">
+
+
+    <link href="./css/keys.css" rel="stylesheet">
+    <style>
+    </style>
+  </head>
+
+  <body>
+    <div id="wrap">
+    <div class="container" style="max-width:1000px !important;" id="main">
+      
+      <!-- Header with menu -->
+      <div class="row marketing">
+        <div class="col-lg-12">
+        <center>
+
+          <h2 style="margin-bottom:20px">Uncovering phosphorylation–based specificities through functional interaction networks</h2>
+          
+          <ul class="nav nav-pills center-pills ">
+            <li role="presentation" class="active" content="menu-content-prediction">
+              <a class="hand">Predictions</a>
+            </li>
+            <li role="presentation" content="menu-content-about">
+              <a class="hand">About</a>
+            </li>
+            <li role="presentation" content="menu-content-help">
+              <a class="hand">Help</a>
+            </li>
+            <li role="presentation" content="menu-content-download">
+              <a class="hand">Download data</a>
+            </li>
+          </ul>
+
+          <div style="margin-bottom:20px"></div>
+
+        </center>
+
+        <hr>
+
+        </div>
+      </div>
+
+      <!-- Select2 dropdown -->
+      <div class="row menu-content-prediction">
+
+        <div class="col-lg-8 col-lg-offset-2 tab1" style="margin-top:1%" id="prediction-query">
+              <input type="search" class="form-control input-lg" name="query", id="query"/>
+        </div>
+
+      </div>
+
+
+      <!-- About page -->
+      <div class="row marketing menu-content-about hide">
+         <div class="col-lg-8">
+          
+          <h4>About</h4>
+          <p>Brief description about method, etc</p>
+
+
+          <h4>Acknowledgements</h4>
+          <p>We gratefully thank the following resources for providing phosphorylation sites and as kinase substrates:</p>
+          <ul style="list-style-type: none; margin-left:-20px;">
+  <li><a target="_blank" href="http://www.phosphosite.org/"><img alt="PhosphoSitePlus Logo" style="height:40px" src="images/psiteplus_logo.jpg"></a></li>
+  <li><a target="_blank" href="http://phospho.elm.eu.org/"><img alt="PhosphoELM Logo" style="height:30px" src="images/pelm_logo.jpg"></a></li>
+  <li><a target="_blank" href="http://www.hprd.org/"><img alt="HPRD Logo" style="height:40px" src="images/hprd_logo.jpg"></a></li>
+  <!-- <li><a target="_blank" href="http://phosphonetworks.org/"><img alt="PhosphoNetworks Logo" style="height:40px" src="/assets/images/phosphonetworks_logo.jpg"/></a></li>
+   -->
+  </ul>
+
+          <h4>Contact</h4>
+          <p>If you have any questions, comments or suggestions drop us a line:</p>
+
+          <a href="mailto:wagih@ebi.ac.uk">wagih@ebi.ac.uk</a><br>
+          <a href="mailto:pbeltrao@ebi.ac.uk">pbeltrao@ebi.ac.uk</a><br>
+
+         </div>
+      </div>
+
+
+      <!-- Help page -->
+      <div class="row marketing menu-content-help hide">
+         <div class="col-lg-8">
+
+          
+          <h4>Help me</h4>
+          <p>Some text helping with each part of the prediction</p>
+
+          <h4>Tips and tricks</h4>
+          <ul>
+            <li>Use the <kbd class="light">&#8592;</kbd> or <kbd class="light">&#8594;</kbd> keys to navigate through pages of the sites table</li>
+            <li>Click the logo images for a zoomed in version</li>
+            <li>Hit the toggle button to switch between bits and probability views for the logo</li>
+            <li>Filter the sites table by typing into the search bar on the top right</li>
+          </ul>
+
+         </div>
+      </div>
+
+      <!-- Download data page -->
+      <div class="row marketing menu-content-download hide">
+         <div class="col-lg-8">
+          <h4>Download data</h4>
+          <p>Links to download all predictions:</p>
+          <ul>
+            <li>TSV flatfiles</li>
+            <li>Logos</li>
+          </ul>
+          
+         </div>
+      </div>
+
+      <!-- Prediction content -->
+      <div class="row marketing hide menu-content-prediction" id="prediction-display">
+
+
+        <div id="enzyme-header" style="margin-top:3%">
+
+        <div class="col-lg-6">
+          <h3 id="enzyme-name" style="margin:0px">[]</h3>
+          <h5 id="enzyme-type">[]</h5>
+        </div>
+        <div class="col-lg-6" >
+          <a id="tsv-dl" href="#" target="_blank"
+           class="btn btn-primary" style="float:right">Download TSV</a>
+
+          <div class="btn-group" style="float:right; margin-right: 8px">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Download logo <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a target="_blank" href="#" id="logo-bits-dl">Bits</a></li>
+              <li><a target="_blank" href="#" id="logo-prob-dl">Probability</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+        </div>
+
+
+
+        <div class="col-lg-12" style="margin:0px">
+        <hr style="margin: 0px">
+        </div>
+
+        <div class="col-lg-6">
+          
+
+          <h3>Details</h3>
+
+          <ul class="list-group">
+
+            <li class="list-group-item">
+              <span class="badge" id="proline-rm">Yes</span>
+              Proline +1 sequences removed
+            </li>
+
+            <li class="list-group-item" >
+              <span class="badge" id="npartners-all">55</span>
+              Number of interacting partners
+            </li>
+            <li class="list-group-item">
+              <span class="badge" id="npartners-sites">38</span>
+              Number of interacting partners with at least one site
+            </li>
+
+            <li class="list-group-item">
+              <span class="badge" id="nsites">366</span>
+              Number of sites on partners
+            </li>
+
+          </ul>
+
+        </div>
+
+
+
+        <div class="col-lg-6">
+          <div style="float:right">
+            <h3>Prediction logo
+            <span>
+            <small><a id="toggle-logo" class="hand badge">toggle</a>
+            </small>
+            </span></h3>
+          </div>
+          <img id="logo-prob" src="#" data-image="#" data-title="NA" 
+               data-caption="Probability logo" style="width:100%" class="intense" alt="Probability Logo"/>
+
+          <img id="logo-bits" src="#" data-image="#" data-title="NA" 
+               data-caption="Bits logo" style="width:100%" class="intense hide" alt="Bits Logo"/>
+
+        </div>
+
+        <div class="col-lg-12">
+          
+
+          <br>
+          <center><h3>Motifs</h3></center>
+
+
+          
+          <table id="motifs-table" class="table table-hover table-striped  table-curved">
+            <thead>
+              <th data-dynatable-column="motif">Motif</th>
+              <th data-dynatable-column="score">Score</th>
+              <th data-dynatable-column="fg_matches">FG matches</th>
+              <th data-dynatable-column="fg_size">FG size</th>
+              <th data-dynatable-column="bg_matches">BG matches</th>
+              <th data-dynatable-column="bg_size">BG size</th>
+              <th data-dynatable-column="fold_increase">Fold increase</th>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <br>
+          <center><h3>Phosphosites</h3></center>
+
+
+          <table id="sites-table" class="table table-hover table-striped table-curved">
+            <thead>
+              <th data-dynatable-column="sub_name">Protein</th>
+              <th data-dynatable-column="string_score_link"  data-dynatable-sorts="string_score">String score</th>
+              <th data-dynatable-column="sub_region">Sequence</th>
+              <th data-dynatable-column="sub_position">Position</th>
+              <th data-dynatable-column="kinase_name">Kinase</th>
+              <th data-dynatable-column="source">Source</th>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+        </div>
+      </div>
+
+
+    </div> <!-- /container -->
+    </div>
+
+      <footer class="footer">
+        <center>
+        <img src="images/footer_logo.svg" alt="Footer Logos" style="width:20%"/>
+        </center>
+      </footer>
+
+
+  
+
+</body></html>

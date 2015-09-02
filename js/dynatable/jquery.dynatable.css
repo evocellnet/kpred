@@ -1,0 +1,129 @@
+/*
+ * jQuery Dynatable plugin 0.3.1
+ *
+ * Copyright (c) 2014 Steve Schwartz (JangoSteve)
+ *
+ * Dual licensed under the AGPL and Proprietary licenses:
+ *   http://www.dynatable.com/license/
+ *
+ * Date: Tue Jan 02 2014
+ */
+
+.dynatable-page-link{
+  text-decoration: none !important;
+}
+
+
+#motifs-table tbody tr td:first-child{
+  /*font-family: "Lucida Console", Monaco, monospace;*/
+  font-family: 'Roboto Mono', Monaco, monospace;
+}
+
+#sites-table tbody tr td:nth-child(3){
+  /*font-family: "Lucida Console", Monaco, monospace;*/
+  font-family: 'Roboto Mono', Monaco, monospace;
+}
+
+
+
+th a {
+  text-decoration: none !important;
+  color: #333333;
+  /*font-weight: 300;*/
+}
+
+thead tr{
+  /*background-color: #d9edf7; */
+  
+
+}
+thead tr th a{
+  /*color: #fff;*/
+}
+
+th a:hover {
+  color: #333;
+  text-decoration: none;
+}
+
+td{
+  text-align: left !important;
+}
+
+.dynatable-search {
+  float: right;
+  margin-bottom: 10px;
+}
+
+.dynatable-pagination-links {
+  float: right;
+}
+
+.dynatable-record-count {
+  display: block;
+  padding: 5px 0;
+}
+
+.dynatable-pagination-links span,
+.dynatable-pagination-links li {
+  display: inline-block;
+}
+
+.dynatable-page-link,
+.dynatable-page-break {
+  display: block;
+  padding: 5px 7px;
+}
+
+.dynatable-page-link {
+  cursor: pointer;
+}
+
+.dynatable-active-page,
+.dynatable-disabled-page {
+  cursor: text;
+}
+.dynatable-active-page:hover,
+.dynatable-disabled-page:hover {
+  text-decoration: none;
+}
+
+.dynatable-active-page {
+  /*background: #d9edf7;*/
+  background: #eee;
+  border-radius: 0px;
+  color: #333;
+}
+.dynatable-active-page:hover {
+  color: #333;
+}
+.dynatable-disabled-page,
+.dynatable-disabled-page:hover {
+  background: none;
+  color: #999;
+}
+
+
+
+
+.table-curved {
+    border-collapse: separate;
+}
+.table-curved {
+    border-radius: 4px;
+    border-left:0px;
+}
+.table-curved th {
+    border-top: none;
+}
+.table-curved th:first-child {
+    border-radius: 4px 0 0 0;
+}
+.table-curved th:last-child {
+    border-radius: 0 4px 0 0;
+}
+.table-curved th:only-child{
+    border-radius: 4px 4px 0 0;
+}
+
+
