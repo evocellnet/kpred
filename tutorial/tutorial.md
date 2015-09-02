@@ -171,5 +171,5 @@ Now if you were to plot a sequence logo (using weblogo) of the final sequences, 
 <img width="400" src="http://evocellnet.github.io/kpred/data/predictions/CDK2/CDK2_logo_prob.png" alt="CDK2 probability logo from weblogo"/>
 
 The code here has been conveniently placed into a function so that you can run everything easily.
-You can access the code [here](http://evocellnet.github.io/kpred/tutorial/predict-specifcity.r)
+You can access the code [here](https://github.com/evocellnet/kpred/blob/gh-pages/tutorial/predict-specificity.r)
 
