@@ -9,7 +9,7 @@ In this tutorial, we will do a walkthrough of how to obtain specifcity predictio
 The idea behind this method is rather simple. The assumption here is that putative interaction partners  of a kinase are more likely than random proteins to be  phosphorylated by that kinase. Therefore, phosphosites occurring on interaction partners of kinases should confer a bias in amino acid composition towards the kinase’s specificity. By performing motif enrichment on these phosphosites, the specifcity of the kinase can, in some cases be predicted (see figure below).
 
 <center>
-<img style="width:50%" src="http://evocellnet.github.io/kpred/images/method.svg" alt="Prediction method"/>
+<img width="500" src="http://evocellnet.github.io/kpred/images/method.svg" alt="Prediction method"/>
 </center>
 ### Before you start
 
@@ -168,7 +168,7 @@ final_seqs = unique( unlist(matched_seqs) )
 
 Now if you were to plot a sequence logo (using weblogo) of the final sequences, you would get a nice visual representation as such:
 
-<img style="width:60%" src="http://evocellnet.github.io/kpred/data/predictions/CDK2/CDK2_logo_prob.png" alt="CDK2 probability logo from weblogo"/>
+<img width="400" src="http://evocellnet.github.io/kpred/data/predictions/CDK2/CDK2_logo_prob.png" alt="CDK2 probability logo from weblogo"/>
 
 The code here has been conveniently placed into a function so that you can run everything easily.
 You can access the code [here](http://evocellnet.github.io/kpred/tutorial/predict-specifcity.r)
