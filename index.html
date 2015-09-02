@@ -22,8 +22,8 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="beta">
     <meta name="author" content="omarwagih">
-
-    <title>kinpred-dummy</title>
+    <link rel="shortcut icon" type="image/png" href="images/favicon.ico"/>
+    <title>kpred</title>
 
     <!-- Bootstrap core CSS -->
     <link href="./css/bootstrap.cosmo.css" rel="stylesheet">
@@ -93,10 +93,17 @@
 
       <!-- About page -->
       <div class="row marketing menu-content-about hide">
-         <div class="col-lg-8">
+         <div class="col-lg-12">
           
           <h4>About</h4>
-          <p>Brief description about method, etc</p>
+          <p>The method presented here aims at predicting specifcities of kinases. Although the method can be expanded to other enzymes that target post translational modifications. </p>
+          <p>
+            The idea behind this method is rather simple. The assumption here is that putative interaction partners  of a kinase are more likely than random proteins to be  phosphorylated by that kinase. Therefore, phosphosites occurring on interaction partners of kinases should confer a bias in amino acid composition towards the kinase’s specificity. By performing motif enrichment on these phosphosites, the specifcity of the kinase can, in some cases be predicted (see figure below).
+
+            <center>
+            <img src="images/method.svg" alt="Prediction method" style="width:50%;"/>
+            </center>
+          </p>
 
 
           <h4>Acknowledgements</h4>
@@ -121,11 +128,11 @@
 
       <!-- Help page -->
       <div class="row marketing menu-content-help hide">
-         <div class="col-lg-8">
+         <div class="col-lg-12">
 
           
-          <h4>Help me</h4>
-          <p>Some text helping with each part of the prediction</p>
+          <h4>Tutorial</h4>
+          <p>A tutorial on how to generate the predictions yourself in R can be found <a href="https://github.com/evocellnet/kpred/tree/gh-pages/tutorial/tutorial.md" target="_blank">here</a></p>
 
           <h4>Tips and tricks</h4>
           <ul>
@@ -140,14 +147,15 @@
 
       <!-- Download data page -->
       <div class="row marketing menu-content-download hide">
-         <div class="col-lg-8">
+         <div class="col-lg-12">
           <h4>Download data</h4>
-          <p>Links to download all predictions:</p>
-          <ul>
-            <li>TSV flatfiles</li>
-            <li>Logos</li>
-          </ul>
+          <p>For convenience, links to download all predictions and logos are provided below</p>
+
+          <a href="data/tsv_data_all.zip" class="btn btn-primary">Download TSVs (zip)</a>
+          <a href="data/logo_bits_all.zip" class="btn btn-primary">Download bit logos (zip)</a>
+          <a href="data/logo_prob_all.zip" class="btn btn-primary">Download probability logos (zip)</a>
           
+          <p style="color:orange; margin-top: 2%; font-size: 13px">Please note that predicted models are purely speculative and should be used with caution. They are based on motifs extracted from phosphosites belonging to the kinase's putative interaction partners. We urge users who use this dataset to manually verify that the logos appear valid before proceeding with downstream analyses. </p>
          </div>
       </div>
 
@@ -260,11 +268,11 @@
 
           <table id="sites-table" class="table table-hover table-striped table-curved">
             <thead>
-              <th data-dynatable-column="sub_name">Protein</th>
+              <th data-dynatable-column="prot_name">Protein</th>
               <th data-dynatable-column="string_score_link"  data-dynatable-sorts="string_score">String score</th>
-              <th data-dynatable-column="sub_region">Sequence</th>
-              <th data-dynatable-column="sub_position">Position</th>
-              <th data-dynatable-column="kinase_name">Kinase</th>
+              <th data-dynatable-column="flank">Sequence</th>
+              <th data-dynatable-column="position">Position</th>
+              <th data-dynatable-column="kinase">Kinase</th>
               <th data-dynatable-column="source">Source</th>
             </thead>
             <tbody></tbody>

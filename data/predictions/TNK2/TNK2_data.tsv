@@ -1,0 +1,22 @@
+name	TNK2
+id	ENSP00000371341
+type	Tyrosine kinase
+proline+1_removed	No
+npartners	70
+npartners_with_sites	59
+nsites	10
+//
+motif	score	fg_matches	fg_size	bg_matches	bg_size	fold_increase
+.....Y.VPP.	321.89	10	263	0	10000	Inf
+//
+prot_id	prot_name	position	flank	kinase	source	string_score
+ENSP00000162330	BCAR1	165	PATDLYQVPPG	PTK6;SRC	hprd;pelm;psite	975
+ENSP00000162330	BCAR1	179	PAQDIYQVPPS	SRC	hprd;psite	975
+ENSP00000162330	BCAR1	192	MGHDIYQVPPS	SRC	hprd;psite	975
+ENSP00000162330	BCAR1	249	GPQDIYDVPPV	FGFR1	hprd;pelm;psite	975
+ENSP00000162330	BCAR1	287	PLLEVYDVPPS	SRC	hprd;psite	975
+ENSP00000162330	BCAR1	306	NHHAVYDVPPS	FGFR1	hprd;pelm;psite	975
+ENSP00000162330	BCAR1	327	LREETYDVPPA	FGFR1	hprd;pelm;psite	975
+ENSP00000162330	BCAR1	362	PAEDVYDVPPP	SRC	hprd;psite	975
+ENSP00000162330	BCAR1	372	PAPDLYDVPPG		hprd;psite	975
+ENSP00000162330	BCAR1	410	VDSGVYAVPPP	FGFR1;PTK2	hprd;pelm;psite	975

@@ -34,6 +34,14 @@ var processingComplete = function(){
       }
 };
 
+function baseName(str)
+{
+   var base = new String(str).substring(str.lastIndexOf('/') + 1); 
+    // if(base.lastIndexOf(".") != -1)       
+    //     base = base.substring(0, base.lastIndexOf("."));
+   return base;
+}
+
 
 $(function() {
 
@@ -48,7 +56,7 @@ $(function() {
 		$('.nav-pills li').removeClass('active');
 		$(this).addClass('active');
 
-		document.title = "kinpred dummy |" + $(this).text();
+		document.title = "kpred |" + $(this).text();
 
 		if(PRED_NAME == "") $('#prediction-display').addClass('hide');
 
@@ -116,13 +124,6 @@ function changePrediction() {
     sites_path = [base, "sites.json"].join("/");
     meta_path = [base, "metadata.json"].join("/");
 
-    bits_png_path = [base, "logo_bits.png"].join("/");
-    prob_png_path = [base, "logo_prob.png"].join("/");
-
-    bits_pdf_path = [base, "logo_bits.pdf"].join("/");
-    prob_pdf_path = [base, "logo_prob.pdf"].join("/");
-
-    tsv_path = [base, "data.tsv"].join("/");
 
 
 
@@ -136,14 +137,22 @@ function changePrediction() {
     	$('#enzyme-name').text(data.name);
 
 
-	    bits_name = ["logo_bits_" , data.name, ".pdf"].join("");
-	    prob_name = ["logo_prob_" , data.name, ".pdf"].join("");
-	    tsv_name = ["data_" , data.name, ".tsv"].join("");
 
-	    $('#logo-bits-dl').attr('href', bits_pdf_path).attr('download', bits_name);
-	    $('#logo-prob-dl').attr('href', prob_pdf_path).attr('download', prob_name);
-	    $('#tsv-dl').attr('href', tsv_path).attr('download', tsv_name);
+	    bits_png_path = [base, data.name+"_logo_bits.png"].join("/");
+	    prob_png_path = [base, data.name+"_logo_prob.png"].join("/");
 
+	    bits_pdf_path = [base, data.name+"_logo_bits.pdf"].join("/");
+	    prob_pdf_path = [base, data.name+"_logo_prob.pdf"].join("/");
+
+	    tsv_path = [base, data.name+"_data.tsv"].join("/");
+
+	    console.log((tsv_path));
+	    $('#logo-bits-dl').attr('href', bits_pdf_path).attr('download', baseName(bits_pdf_path));
+	    $('#logo-prob-dl').attr('href', prob_pdf_path).attr('download', baseName(prob_pdf_path));
+
+	    $('#tsv-dl').attr('href', tsv_path).attr('download', baseName(tsv_path));
+
+	    console.log($('#tsv-dl'));
 
 		$('#logo-bits')
 	    	.attr('src', bits_png_path)
@@ -203,8 +212,8 @@ function changePrediction() {
 		// COLOR SITES :)
 		for(var i = 0; i < records.length; i++){
 
-			records[i].sub_region = colorSequence(records[i].sub_region, pos_and_char);
-			string_link = sprintf("http://string-db.org/version_9_1/newstring_cgi/show_network_section.pl?all_channels_on=0&identifiers=9606.%s%%0D9606.%s", metadata.ensp, records[i].sub_ensp)
+			records[i].sub_region = colorSequence(records[i].flank, pos_and_char);
+			string_link = sprintf("http://string-db.org/version_9_1/newstring_cgi/show_network_section.pl?all_channels_on=0&identifiers=9606.%s%%0D9606.%s", metadata.ensp, records[i].prot_id)
 			records[i].string_score_link = sprintf('<a target="_blank" class="string-score" href="%s">%s</a>', string_link, records[i].string_score);
 		}
 	      dynatable = $('#sites-table').dynatable({
@@ -223,6 +232,8 @@ function changePrediction() {
 	      processingComplete();
 	});
 
+
+	$('#dynatable-pagination-links-sites-table li:nth-child(3) a').click();
 
 
 }
