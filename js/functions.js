@@ -34,11 +34,8 @@ var processingComplete = function(){
       }
 };
 
-function baseName(str)
-{
+function baseName(str){
    var base = new String(str).substring(str.lastIndexOf('/') + 1); 
-    // if(base.lastIndexOf(".") != -1)       
-    //     base = base.substring(0, base.lastIndexOf("."));
    return base;
 }
 
@@ -50,15 +47,15 @@ $(function() {
 	//******************************
 	$('.nav-pills li').click(function(){
 		
-		$("div[class*='menu-content-']").addClass('hide');
-		$("." + $(this).attr('content')).removeClass('hide');
+		$("div[class*='menu-content-']").hide();
+		$("." + $(this).attr('content')).fadeIn();
 
 		$('.nav-pills li').removeClass('active');
 		$(this).addClass('active');
 
 		document.title = "kpred |" + $(this).text();
 
-		if(PRED_NAME == "") $('#prediction-display').addClass('hide');
+		if(PRED_NAME == "") $('#prediction-display').hide();
 
 	});
 	$('.nav-pills li.active').click();
@@ -99,10 +96,11 @@ $(function() {
 		  	data:records,
 		  	placeholder: "Select a prediction"
 		  }).on("change", function(e) {
-		  	  // Show div if its hidden
-		  	  $('#prediction-display').removeClass("hide");
-
-	          PRED_NAME = e.added.text;
+		  	  $("#select-a-prediction").slideUp("fast", function(){
+		  	  	  // Show div if its hidden
+			  	  $('#prediction-display').slideDown();
+		  	  });
+	          PRED_NAME = e.added.gene_name;
 	          changePrediction();
 
           }); 
@@ -129,6 +127,7 @@ function changePrediction() {
 
     $.getJSON(meta_path, function(data){
     	window.metadata = data;
+    	$('#enzyme-fam').text(data.family.replace("_", " "));
     	$('#proline-rm').text(data.rm_p);
     	$('#npartners-sites').text(data.npartners_with_sites);
     	$('#npartners-all').text(data.npartners);
@@ -146,7 +145,6 @@ function changePrediction() {
 
 	    tsv_path = [base, data.name+"_data.tsv"].join("/");
 
-	    console.log((tsv_path));
 	    $('#logo-bits-dl').attr('href', bits_pdf_path).attr('download', baseName(bits_pdf_path));
 	    $('#logo-prob-dl').attr('href', prob_pdf_path).attr('download', baseName(prob_pdf_path));
 
@@ -212,11 +210,12 @@ function changePrediction() {
 		// COLOR SITES :)
 		for(var i = 0; i < records.length; i++){
 
-			records[i].sub_region = colorSequence(records[i].flank, pos_and_char);
+			records[i].flank = colorSequence(records[i].flank, pos_and_char);
 			string_link = sprintf("http://string-db.org/version_9_1/newstring_cgi/show_network_section.pl?all_channels_on=0&identifiers=9606.%s%%0D9606.%s", metadata.ensp, records[i].prot_id)
 			records[i].string_score_link = sprintf('<a target="_blank" class="string-score" href="%s">%s</a>', string_link, records[i].string_score);
 			prot_link = sprintf("http://string-db.org/version_9_1/newstring_cgi/show_network_section.pl?all_channels_on=0&amp;identifiers=9606.%s", records[i].prot_id);
 			records[i].prot_name = sprintf('<a target="_blank" class="prot-name" href="%s">%s</a>', prot_link, records[i].prot_name);
+			//if(i==0) console.log(records[i])
 		}
 	      dynatable = $('#sites-table').dynatable({
 	        dataset: {

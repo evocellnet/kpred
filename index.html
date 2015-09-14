@@ -39,9 +39,8 @@
 
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,700,900,400italic,100|Roboto+Mono:400,300,700' rel='stylesheet' type='text/css'>
     <link href="./css/style.css" rel="stylesheet">
-
-
     <link href="./css/keys.css" rel="stylesheet">
+
     <style>
     </style>
   </head>
@@ -51,7 +50,7 @@
     <div class="container" style="max-width:1000px !important;" id="main">
       
       <!-- Header with menu -->
-      <div class="row marketing">
+      <div class="row marketing" style="margin-bottom:0px">
         <div class="col-lg-12">
         <center>
 
@@ -82,8 +81,9 @@
       </div>
 
       <!-- Select2 dropdown -->
-      <div class="row menu-content-prediction">
 
+      <div class="row menu-content-prediction">
+        <h3 id="select-a-prediction" style="font-weight:300; text-align:center">Select a prediction from the dropdown below to get started</h3>
         <div class="col-lg-8 col-lg-offset-2 tab1" style="margin-top:1%" id="prediction-query">
               <input type="search" class="form-control input-lg" name="query", id="query"/>
         </div>
@@ -92,14 +92,13 @@
 
 
       <!-- About page -->
-      <div class="row marketing menu-content-about hide">
+      <div class="row marketing menu-content-about" style="display:none">
          <div class="col-lg-12">
           
           <h4>About</h4>
-          <p>The method presented here aims at predicting specifcities of kinases. Although the method can be expanded to other enzymes that target post translational modifications. </p>
+          <p>The method presented here aims at predicting specificities of kinases. Although the method can be expanded to other enzymes that target post translational modifications.</p>
           <p>
-            The idea behind this method is rather simple. The assumption here is that putative interaction partners  of a kinase are more likely than random proteins to be  phosphorylated by that kinase. Therefore, phosphosites occurring on interaction partners of kinases should confer a bias in amino acid composition towards the kinase’s specificity. By performing motif enrichment on these phosphosites, the specifcity of the kinase can, in some cases be predicted (see figure below).
-
+            The idea behind this method is rather simple. The assumption here is that putative interaction partners of a kinase are more likely than random proteins to be phosphorylated by that kinase. Therefore, phosphosites occurring on interaction partners of kinases should confer a bias in amino acid composition towards the kinase’s specificity. By performing motif enrichment on these phosphosites, the specificity of the kinase can, in some cases be predicted (see figure below).
             <center>
             <img src="images/method.svg" alt="Prediction method" style="width:50%;"/>
             </center>
@@ -107,7 +106,7 @@
 
 
           <h4>Acknowledgements</h4>
-          <p>We gratefully thank the following resources for providing phosphorylation sites and as kinase substrates:</p>
+          <p>We gratefully thank the following resources for providing phosphorylation sites and kinase substrates</p>
           <ul style="list-style-type: none; margin-left:-20px;">
   <li><a target="_blank" href="http://www.phosphosite.org/"><img alt="PhosphoSitePlus Logo" style="height:40px" src="images/psiteplus_logo.jpg"></a></li>
   <li><a target="_blank" href="http://phospho.elm.eu.org/"><img alt="PhosphoELM Logo" style="height:30px" src="images/pelm_logo.jpg"></a></li>
@@ -117,17 +116,14 @@
   </ul>
 
           <h4>Contact</h4>
-          <p>If you have any questions, comments or suggestions drop us a line:</p>
-
-          <a href="mailto:wagih@ebi.ac.uk">wagih@ebi.ac.uk</a><br>
-          <a href="mailto:pbeltrao@ebi.ac.uk">pbeltrao@ebi.ac.uk</a><br>
+          <p>If you have any questions, comments or suggestions <a href="mailto:wagih@ebi.ac.uk,pbeltrao@ebi.ac.uk?subject=Kinase specificity prediction">get in touch with us</a>.</p>
 
          </div>
       </div>
 
 
       <!-- Help page -->
-      <div class="row marketing menu-content-help hide">
+      <div class="row marketing menu-content-help" style="display:none">
          <div class="col-lg-12">
 
           
@@ -146,7 +142,7 @@
       </div>
 
       <!-- Download data page -->
-      <div class="row marketing menu-content-download hide">
+      <div class="row marketing menu-content-download" style="display:none">
          <div class="col-lg-12">
           <h4>Download data</h4>
           <p>For convenience, links to download all predictions and logos are provided below. In addition to these we provide other datasets including all protein sequences, STRING network (v9.1) and all phosphosites used.</p>
@@ -156,12 +152,12 @@
           <a href="data/logo_prob_all.zip" style="margin-top:4px" class="btn btn-primary">All PDF probability logos (zip)</a>
           <a href="tutorial/kpred_data.zip" style="margin-top:4px" class="btn btn-primary">All other data (zip)</a>
           
-          <p style="color:orange; margin-top: 2%; font-size: 13px">Please note that predicted models are purely speculative and should be used with caution. They are based on motifs extracted from phosphosites belonging to the kinase's putative interaction partners. We urge users who use this dataset to manually verify that the logos appear valid before proceeding with downstream analyses. </p>
+          <p style="color:orange; margin-top: 2%; font-size: 13px">Please note that predicted models are speculative and should be used with caution. They are based on motifs extracted from phosphosites belonging to the kinase's putative interaction partners. We advise users who use this dataset to manually verify that the logos appear valid before proceeding with downstream analyses. </p>
          </div>
       </div>
 
       <!-- Prediction content -->
-      <div class="row marketing hide menu-content-prediction" id="prediction-display">
+      <div class="row marketing menu-content-prediction" id="prediction-display" style="display:none">
 
 
         <div id="enzyme-header" style="margin-top:3%">
@@ -200,6 +196,10 @@
           <h3>Details</h3>
 
           <ul class="list-group">
+            <li class="list-group-item">
+              <span class="badge" id="enzyme-fam">-</span>
+              Group/family
+            </li>
 
             <li class="list-group-item">
               <span class="badge" id="proline-rm">Yes</span>
@@ -229,16 +229,20 @@
         <div class="col-lg-6">
           <div style="float:right">
             <h3>Prediction logo
-            <span>
-            <small><a id="toggle-logo" class="hand badge">toggle</a>
-            </small>
-            </span></h3>
+            <span><small><a id="toggle-logo" class="hand badge">toggle</a></small></span></h3>
           </div>
           <img id="logo-prob" src="#" data-image="#" data-title="NA" 
                data-caption="Probability logo" style="width:100%" class="intense" alt="Probability Logo"/>
 
           <img id="logo-bits" src="#" data-image="#" data-title="NA" 
                data-caption="Bits logo" style="width:100%" class="intense hide" alt="Bits Logo"/>
+
+         <!--   <h3>Experimental logo <span><small><a id="exp-toggle-logo" class="hand badge">toggle</a></small></span></h3>
+           <img id="exp-logo-prob" src="data/predictions/ADRBK1/ADRBK1_logo_prob.png" data-image="#" data-title="NA" 
+               data-caption="Probability logo" style="width:100%" class="intense" alt="Experimental Probability Logo"/>
+
+            <img id="exp-logo-bits" src="data/predictions/ADRBK1/ADRBK1_logo_prob.png" data-image="#" data-title="NA" 
+               data-caption="Bits logo" style="width:100%" class="intense hide" alt="Experimental Bits Logo"/> -->
 
         </div>
 
@@ -295,4 +299,5 @@
 
   
 
-</body></html>
+</body>
+</html>
