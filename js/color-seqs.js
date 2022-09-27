@@ -72,8 +72,9 @@ function colorSequence(seq, position_and_char) {
 	// Offset for color
 	offset = 0;
 
+	lens = motifs_pos.length || 0
 	// For each motif position
-	for (var i = 0; i < motifs_pos.length; i++) {
+	for (var i = 0; i < lens; i++) {
 		// Current index
 		curr_index = i 
 
